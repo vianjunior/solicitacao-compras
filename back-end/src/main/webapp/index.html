@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <script language="javascript" type="text/javascript">
+        const baseURL = location.protocol + "//"                        // protocolo + '//'
+            + location.hostname                                         // hostname
+            + (location.port != "" ? ":" + location.port + "/" : "/")   // se houver porta, :porta + '/', senão '/'
+    </script>
+</head>
+<body>
+    <span>Servidor rodando!</span>
+    <br>
+    <span>Rotas disponiveis em:
+        <script language="javascript" type="text/javascript">
+            document.write(baseURL + "server/rest/")
+        </script>
+    </span>
+</body>
+</html>

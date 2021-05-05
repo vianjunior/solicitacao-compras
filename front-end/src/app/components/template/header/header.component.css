@@ -1,0 +1,27 @@
+.header {
+    display: flex;
+    align-items: center;
+    position: sticky;
+    top: 0;
+}
+
+.header a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.header .logo {
+    font-size: 2rem;
+    display: flex;
+    margin-left: 18px;
+    flex-direction: column;
+}
+
+.header .logo .sub {
+    font-size: 1rem;
+}
+
+.header .title-group {
+    margin-left: 50px;
+}

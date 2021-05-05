@@ -1,0 +1,63 @@
+<mat-card>
+    <mat-card-title>
+        {{ title }}
+    </mat-card-title>
+    <form [formGroup] = "purchaseForm">
+        <mat-form-field>
+            <input matInput 
+                placeholder="Solicitante" 
+                formControlName="requesterName"
+                [readonly]="readOnlyField()"
+            >
+        </mat-form-field>
+        <form-group formGroupName="product">
+            <mat-form-field>
+                <input matInput 
+                    placeholder="Produto"
+                    formControlName="description"
+                    [readonly]="readOnlyField()"
+                >
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput
+                    currencyMask
+                    [options]="{ 
+                        align: 'left', 
+                        prefix: 'R$ ', 
+                        thousands: '.', 
+                        decimal: ',',
+                        max: '99999999999' 
+                    }"
+                    placeholder="Preço"
+                    formControlName="price"
+                    [readonly]="readOnlyField()"
+                >
+            </mat-form-field>
+        </form-group>
+        <mat-form-field *ngIf="showField()">
+            <mat-label>Aprovação</mat-label>
+            <mat-select 
+                formControlName="approval"
+            >
+                    <mat-option disabled [value]="null">Selecione uma opção</mat-option>
+                    <mat-option [value]="'aprovado'">Aprovado</mat-option>
+                    <mat-option [value]="'reprovado'">Reprovado</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field *ngIf="showField()">
+            <input
+                matInput 
+                placeholder="Observação" 
+                formControlName="obs"
+            >
+        </mat-form-field>
+    </form>
+
+    <button [disabled]='purchaseForm.invalid' mat-raised-button (click)="handleSendTask()" color="primary">
+        Enviar
+    </button>
+    
+    <button mat-raised-button (click)="cancelPurchase()">
+        Cancelar
+    </button>
+</mat-card>
