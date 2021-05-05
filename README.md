@@ -12,7 +12,6 @@ Cada parte da aplicação encontra-se em seus respectivos diretórios:
 * Apache Maven 3.8;
 * Apache Tomcat 9;
 * Node.js;
-* Angular CLI;
 
 ## Configuração de conexão com o bando de dados
 * Executar o script para criação do banco de dados, que encontra-se em `back-end/src/main/resources/META-INF/createDatabase.sql`
@@ -32,14 +31,11 @@ Neste ponto, o Java e o Apache Maven já devem estar instalados;
 * Abrir o arquivo `server.xml`, que se encontra na pasta `conf`, no diretório da instalação do Tomcat;
 * Na tag `Connector`, do protocolo HTTP, configurar o valor ta propriedade `port` para `8081`. As demais propriedades podem ser mantidas com o valor padrão da instalação.
 <pre>
-&lt;Host name="localhost"  appBase="webapps"
-            unpackWARs="true" autoDeploy="true">
-            
-        &lt;Connector port="8081" protocol="HTTP/1.1"
-            connectionTimeout="20000"
-            URIEncoding="ISO-8859-1"		   
-            redirectPort="8443" 
-        />
+&lt;Connector port="8081" protocol="HTTP/1.1"
+    connectionTimeout="20000"
+    URIEncoding="ISO-8859-1"		   
+    redirectPort="8443" 
+/>
 </pre>
 
 * Na tag `Host`, setar as propriedades `unpackWARs` e `autoDeploy` para true;
@@ -47,12 +43,15 @@ Neste ponto, o Java e o Apache Maven já devem estar instalados;
 `C:\back-end` representa o caminho absoluto onde e encontra o diretório do backend.
 * Setar a propriedade `path` para `/purchase`. Este é o contexto do servidor.
 <pre>
-&lt;Context crossContext="true" debug="0" 
-    docBase="C:\back-end\target\back-end.war" 
-    path="/purchase" 
-    reloadable="false" 
-    previleged="true"
-/> 
+&lt;Host name="localhost"  appBase="webapps"
+            unpackWARs="true" autoDeploy="true">
+    
+    &lt;Context crossContext="true" debug="0" 
+        docBase="C:\back-end\target\back-end.war" 
+        path="/purchase" 
+        reloadable="false" 
+        previleged="true"
+    /> 
 </pre>
 * O diretório `\target`, bem como o arquivo `back-end.war`, são criados pelo clean install do maven;
 
@@ -67,4 +66,4 @@ Neste ponto, o Node.js e o Angular CLI já devem estar instalados;
 * Executar o comando `npm-install`;
 * Ao finalizar, executar o comando `npm-start`;
 
-Feito isto, a aplicação já pode ser acessada, em `http://localhost:4200/`
+Feito isto, a aplicação irá iniciar, podendo ser acessada, em `http://localhost:4200/`
