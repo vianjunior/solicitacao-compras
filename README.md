@@ -32,11 +32,14 @@ Neste ponto, o Java e o Apache Maven já devem estar instalados;
 * Abrir o arquivo `server.xml`, que se encontra na pasta `conf`, no diretório da instalação do Tomcat;
 * Na tag `Connector`, do protocolo HTTP, configurar o valor ta propriedade `port` para `8081`. As demais propriedades podem ser mantidas com o valor padrão da instalação.
 <pre>
-&lt;Connector port="8081" protocol="HTTP/1.1"
-    connectionTimeout="20000"
-    URIEncoding="ISO-8859-1"		   
-    redirectPort="8443" 
-/>
+&lt;Host name="localhost"  appBase="webapps"
+            unpackWARs="true" autoDeploy="true">
+            
+        &lt;Connector port="8081" protocol="HTTP/1.1"
+            connectionTimeout="20000"
+            URIEncoding="ISO-8859-1"		   
+            redirectPort="8443" 
+        />
 </pre>
 
 * Na tag `Host`, setar as propriedades `unpackWARs` e `autoDeploy` para true;
